@@ -9,8 +9,15 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  color: blue;
 }
 
 * {
   box-sizing: border-box;
+}
+
+h1{
+  span{
+    font-size: 30px;
+  }
 }
