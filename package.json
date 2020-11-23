@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/react": "^17.0.0",
+    "axios": "^0.21.0",
     "gray-matter": "^4.0.2",
     "next": "10.0.2",
     "react": "17.0.1",
