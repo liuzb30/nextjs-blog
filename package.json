@@ -10,14 +10,18 @@
   "dependencies": {
     "@types/axios": "^0.14.0",
     "@types/react": "^17.0.0",
+    "@types/ua-parser-js": "^0.7.33",
     "axios": "^0.21.0",
     "gray-matter": "^4.0.2",
+    "marked": "^1.2.5",
     "next": "10.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sass": "^1.29.0"
+    "sass": "^1.29.0",
+    "ua-parser-js": "^0.7.22"
   },
   "devDependencies": {
+    "@types/marked": "^1.2.0",
     "@types/node": "^14.14.9",
     "@types/react-dom": "^17.0.0",
     "prettier": "^2.2.0",
