@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
     "@types/axios": "^0.14.0",
     "@types/react": "^17.0.0",
     "@types/ua-parser-js": "^0.7.33",

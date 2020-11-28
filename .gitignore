@@ -38,3 +38,6 @@ yarn-error.log*
 
 # blog-data
 blog-data/
+
+# build
+dist/

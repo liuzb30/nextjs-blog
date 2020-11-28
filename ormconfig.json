@@ -1,20 +1,20 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "120.78.176.191",
    "port": 5432,
-   "username": "test",
-   "password": "test",
-   "database": "test",
+   "username": "blog",
+   "password": "123456",
+   "database": "blog_development",
    "synchronize": true,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      "src/entity/**/*.js"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "src/migration/**/*.js"
    ],
    "subscribers": [
-      "src/subscriber/**/*.ts"
+      "src/subscriber/**/*.js"
    ],
    "cli": {
       "entitiesDir": "src/entity",
