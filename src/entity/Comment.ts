@@ -2,8 +2,8 @@ import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn} fro
 import {User} from "./User";
 import {Post} from "./Post";
 
-@Entity()
-export class PostComment {
+@Entity('comments')
+export class Comment {
     @PrimaryGeneratedColumn('increment')
     id:number;
     @Column('varchar')

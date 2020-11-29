@@ -1,8 +1,8 @@
 import {Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Post} from "./Post";
-import {PostComment} from "./PostComment";
+import {Comment} from "./Comment";
 
-@Entity()
+@Entity('users')
 export class User {
     @PrimaryGeneratedColumn('increment')
     id:number;
@@ -16,6 +16,6 @@ export class User {
     updatedAt:Date;
     @OneToMany(type=>Post,post=>post.author)
     posts:Post[];
-    @OneToMany(type=>PostComment, comment=>comment.user)
+    @OneToMany(type=>Comment, comment=>comment.user)
     comments:Comment[]
 }
