@@ -1,7 +1,9 @@
-import {Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {BeforeInsert, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Post} from "./Post";
 import {Comment} from "./Comment";
 import {getDatabaseConnection} from "../../lib/getDatabaseConnection";
+import md5 from "md5";
+import _ from 'lodash'
 
 @Entity('users')
 export class User {
@@ -26,6 +28,11 @@ export class User {
         password:[] as string[],
         passwordComfirm:[]as string[]
     }
+    @BeforeInsert()
+    updatePasswordComfirm(){
+        this.passwordDigest = md5(this.password)
+    }
+
 
     async validator(){
         const {username, password, passwordComfirm} = this
@@ -53,5 +60,9 @@ export class User {
     }
     hasError(){
         return Object.values(this.errors).some(value=>value.length>0)
+    }
+
+    toJSON(){
+        return _.omit(this, ['password','passwordComfirm', 'passwordDigest', 'errors'])
     }
 }

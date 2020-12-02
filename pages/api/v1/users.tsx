@@ -18,7 +18,6 @@ const users:NextApiHandler = async (req,res)=>{
         res.end(JSON.stringify(user.errors))
     }else{
         // 创建用户
-        user.passwordDigest = md5(password)
         const connection = await getDatabaseConnection()
         await connection.manager.save(user)
         res.statusCode = 200;

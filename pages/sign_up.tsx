@@ -22,7 +22,7 @@ const SignUp: NextPage = (porops) => {
         })
         axios.post('/api/v1/users', {...formData}).then(res=>{
             alert('注册成功')
-            window.location.href = '/sign_in'
+            // window.location.href = '/sign_in'
         },error=>{
             if(error.response.status===422){
                 setErrors(error.response.data)
@@ -33,7 +33,6 @@ const SignUp: NextPage = (porops) => {
     }, [formData])
     return (<div>
         <h1>注册页面</h1>
-        {JSON.stringify(formData)}
         <form onSubmit={onSubmit}>
             <div>
                 <label htmlFor="">
