@@ -4,9 +4,6 @@ import {SignIn} from "../../../src/model/SignIn";
 import withSession from "../../../lib/withSession";
 
 const Sessions:NextApiHandler = async (req,res)=>{
-    console.log(req.body)
-    // @ts-ignore
-    console.log(req.session)
     // 判断用户是否存在
     const {username,password} = req.body
     const signIn = new SignIn()
@@ -20,9 +17,11 @@ const Sessions:NextApiHandler = async (req,res)=>{
     }else {
         // 用户名密码正确，生成session
         // @ts-ignore
-        req.session.set('user',signIn.user)
+        req.session.set('currentUser',signIn.user)
+        // @ts-ignore
+        await req.session.save()
         res.statusCode=200
-        res.end('用户名密码正确')
+        res.end(JSON.stringify(signIn.user))
     }
 }
 
