@@ -65,7 +65,7 @@ const SignIn: NextPage<{ user: User }> = (props) => {
           },
         ]}
         buttons={<button type="submit">登录</button>}
-      ></Form>
+      />
     </div>
   );
 };
