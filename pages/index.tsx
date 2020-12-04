@@ -33,11 +33,7 @@ const index: NextPage<Props> = (props) => {
 export default index;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const connection = await getDatabaseConnection();
-  // console.log(connection)
   const posts = await connection.manager.find(Post);
-  // console.log(posts);
-  // const ua = context.req.headers["user-agent"];
-  // const result = new UAParser(ua).getResult();
   return {
     props: { posts: JSON.parse(JSON.stringify(posts)) },
   };

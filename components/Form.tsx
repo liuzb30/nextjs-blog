@@ -1,4 +1,4 @@
-import {ChangeEventHandler, FormEventHandler, ReactChild, ReactChildren} from "react";
+import React, {ChangeEventHandler, FormEventHandler, ReactChild} from "react";
 
 type Props = {
     onSubmit:FormEventHandler,
