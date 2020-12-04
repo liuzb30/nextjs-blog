@@ -9,7 +9,7 @@ createConnection()
       const {manager} = connection
       const u1 = new User()
       u1.username = 'lzb'
-      u1.passwordDigest = 'xxx'
+      u1.password = '123123'
       await manager.save(u1)
       const p1 = new Post()
       p1.title = '第一篇文章'

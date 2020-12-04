@@ -1,5 +1,4 @@
 import {NextApiHandler} from "next";
-// @ts-ignore
 import {SignIn} from "../../../src/model/SignIn";
 import withSession from "../../../lib/withSession";
 

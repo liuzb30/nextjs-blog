@@ -47,3 +47,7 @@ yarn dev
 yarn build
 yarn start
 ```
+
+## 错误
+### 如果执行`node dist/seed.js`报错`Cannot find module '../../lib/getDatabaseConnection'`
+需要把entity/User里面跟connection相关的代码注释掉
