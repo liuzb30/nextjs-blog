@@ -13,7 +13,7 @@ type useFormOptions<T> = {
   buttons: ReactChild;
   submit: {
     request: (formData: T) => Promise<AxiosResponse>;
-    message: string;
+    callback: ()=> void;
   };
 };
 
@@ -40,11 +40,16 @@ export function useForm<T>(options: useFormOptions<T>) {
       e.preventDefault();
       submit.request(formData).then(
         (res) => {
-          window.alert(submit.message);
+          // window.alert(submit.message);
+          submit.callback()
         },
         (error) => {
           if (error.response.status === 422) {
             setErrors(error.response.data);
+          }else if(error.response.status===401){
+            alert(JSON.stringify(error.response.data))
+            console.log(2222)
+            window.location.href = `/sign_in?redirectTo=/post/new`
           } else {
             alert(JSON.stringify(error.response.data));
           }

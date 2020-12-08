@@ -11,6 +11,11 @@ const posts: NextApiHandler = withSession(async (req, res) => {
   post.content = content;
   // @ts-ignore
   const user = req.session.get("currentUser");
+  if(!user){
+    res.statusCode=401
+    res.end('请先登录')
+    return
+  }
   post.author = user;
   const connection = await getDatabaseConnection();
   await connection.manager.save(post);

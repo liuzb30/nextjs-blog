@@ -16,7 +16,7 @@ const SignUp: NextPage = (props) => {
             {label:'确认密码',type:'password',key:'passwordComfirm'},
         ],
         buttons:<button type="submit">注册</button>,
-        submit:{request: (formData)=> axios.post('/api/v1/users',formData),message:'注册成功'}
+        submit:{request: (formData)=> axios.post('/api/v1/users',formData),callback:()=>window.alert('注册成功')}
     })
 
   return (
