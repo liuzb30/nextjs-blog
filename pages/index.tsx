@@ -1,4 +1,6 @@
-import PostsIndex,{getServerSideProps} from "./post";
+import PostsIndex, { getServerSideProps } from "./post";
 
-export default PostsIndex
+export default PostsIndex;
 export { getServerSideProps };
+
+
