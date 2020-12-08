@@ -1,29 +1,32 @@
-import { NextPage } from "next";
-import { getPosts } from "../../lib/posts";
+import "reflect-metadata";
+import {Post} from "../../src/entity/Post";
+import {GetServerSideProps, NextPage} from "next";
 import Link from "next/link";
+import {getDatabaseConnection} from "../../lib/getDatabaseConnection";
 
-const PostsIndex: NextPage<{ posts: Post[] }> = (props) => {
-  const { posts } = props;
-  return (
-    <div>
-      <h1>文章列表</h1>
-
-      {posts.map((post) => (
-        <Link href={`/post/${post.id}`} key={post.id}>
-          <a>{post.id}</a>
-        </Link>
-      ))}
-    </div>
-  );
+type Props = {
+  posts: Post[];
 };
 
-export default PostsIndex;
+const PostsIndex: NextPage<Props> = (props) => {
+  const { posts } = props;
 
-export const getStaticProps = async () => {
-  const posts = await getPosts();
+  return (
+      <div>
+        <h1>文章列表</h1>
+        {posts.map((post) => (
+            <Link key={post.id} href={`/post/${post.id}`}>
+              <a> {post.title}</a>
+            </Link>
+        ))}
+      </div>
+  );
+};
+export default PostsIndex;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const connection = await getDatabaseConnection();
+  const posts = await connection.manager.find(Post);
   return {
-    props: {
-      posts: JSON.parse(JSON.stringify(posts)),
-    },
+    props: { posts: JSON.parse(JSON.stringify(posts)) },
   };
 };
