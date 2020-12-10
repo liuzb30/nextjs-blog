@@ -4,6 +4,7 @@ import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { getDatabaseConnection } from "../../lib/getDatabaseConnection";
 import * as querystring from "querystring";
+import {usePager} from "../../hooks/usePager";
 
 type Props = {
   posts: Post[];
@@ -13,8 +14,9 @@ type Props = {
 };
 
 const PostsIndex: NextPage<Props> = (props) => {
-  const { posts, totalCount, page } = props;
-  // const totalPage = Math.ceil(totalCount / perPage);
+  const { posts, totalCount, page,perPage } = props;
+  const totalPage = Math.ceil(totalCount / perPage);
+  const {pager} = usePager({page,totalPage})
   return (
     <div>
       <h1>文章列表 {totalCount}</h1>
@@ -24,13 +26,7 @@ const PostsIndex: NextPage<Props> = (props) => {
         </Link>
       ))}
       <div>
-        <Link href={`?page=${page - 1}`}>
-          <a>上一页</a>
-        </Link>{" "}
-        |
-        <Link href={`?page=${page + 1}`}>
-          <a>下一页</a>
-        </Link>
+        {pager}
       </div>
     </div>
   );
