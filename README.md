@@ -1,10 +1,14 @@
 ## 启动数据库
 ```
 mkdir blog-data
+docker run -v "blog-data":/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_PASSWORD=123456 -d postgres:12.2
+
 docker run -v "$PWD/blog-data":/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_URER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
+
 或者旧版 Windows Docker 客户端运行下面的代码
 
 docker run -v "blog-data":/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres:12.2
+
 ```
 
 ## 清空之前的开发环境
