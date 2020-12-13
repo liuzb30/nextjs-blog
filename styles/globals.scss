@@ -5,19 +5,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-  color: blue;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-h1{
-  span{
-    font-size: 30px;
-  }
-}
+* {margin: 0;padding: 0;box-sizing: border-box;}
+*::after, *::before {box-sizing: border-box;}
+a {text-decoration: none; color: #00adb5; border-bottom: 1px solid;}
+a, input, button {font: inherit;}
+h1 {margin: 8px 0;}
+p {margin: 4px 0;}
