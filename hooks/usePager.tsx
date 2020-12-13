@@ -31,37 +31,50 @@ export function usePager(options: Options) {
 
     setPages(temp);
   }, [page, totalPage]);
-  const pager = (
-    <div className='pager'>
-      {page>1 && <Link href={`?page=${page-1}`}><a>上一页</a></Link>}
-      {pages.map((n) =>
-        n === -1 ? (
-          <span key={n}>...</span>
-        ) : (
-          <Link href={`?page=${n}`} key={n}>
-            <a className={page===n?'active':''}>{n}</a>
-          </Link>
-        )
-      )}
-      {page<totalPage && <Link href={`?page=${page+1}`}><a>下一页</a></Link>}
-      <style jsx>{`
-        .pager{
-          padding: 10px 0;
-        }
-        .pager span, .pager a {
-          margin-right: 10px;
-        }
-        .pager a {
-          padding: 8px;
-          border: 1px solid #eee;
-          color: #222;
-        }
-        .pager a.active{
-            color:blue;
+  const pager =
+    totalPage > 1 ? (
+      <>
+        <div className="pager">
+          {page > 1 && (
+            <Link href={`?page=${page - 1}`}>
+              <a>上一页</a>
+            </Link>
+          )}
+          {pages.map((n) =>
+            n === -1 ? (
+              <span key={n}>...</span>
+            ) : (
+              <Link href={`?page=${n}`} key={n}>
+                <a className={page === n ? "active" : ""}>{n}</a>
+              </Link>
+            )
+          )}
+          {page < totalPage && (
+            <Link href={`?page=${page + 1}`}>
+              <a>下一页</a>
+            </Link>
+          )}
+        </div>
+        <style jsx>{`
+          .pager {
+            margin-top: 10px;
+            padding: 10px 0;
           }
-      `}</style>
-    </div>
-  );
+          .pager span,
+          .pager a {
+            margin-right: 10px;
+          }
+          .pager a {
+            padding: 8px;
+            border: 1px solid #eee;
+            color: #222;
+          }
+          .pager a.active {
+            color: blue;
+          }
+        `}</style>
+      </>
+    ) : null;
   return {
     pager,
   };
