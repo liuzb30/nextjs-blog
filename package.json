@@ -21,6 +21,7 @@
     "@types/ua-parser-js": "^0.7.33",
     "axios": "^0.21.0",
     "concurrently": "^5.3.0",
+    "github-markdown-css": "^4.0.0",
     "gray-matter": "^4.0.2",
     "lodash": "^4.17.20",
     "marked": "^1.2.5",
