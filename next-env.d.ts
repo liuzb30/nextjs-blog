@@ -8,3 +8,7 @@ type Post = {
   content: string;
   htmlContent: string;
 };
+
+type User={
+  id:string;
+}

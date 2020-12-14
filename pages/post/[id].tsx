@@ -1,18 +1,30 @@
-import { GetServerSideProps, NextPage } from "next";
+import {GetServerSideProps, GetServerSidePropsContext, NextPage} from "next";
 import { getDatabaseConnection } from "../../lib/getDatabaseConnection";
 import { Post } from "../../src/entity/Post";
 import marked from "marked";
+import withSession from "../../lib/withSession";
+import Link from "next/link";
 
 type Props = {
   post: Post;
+  currentUser: User;
 };
 const postsShow: NextPage<Props> = (props) => {
-  const { post } = props;
+  const { post,currentUser } = props;
   return (
     <>
       <div className="wrapper">
-        <h1>{post.title}</h1>
-        <article
+        <header>
+          <h1>{post.title}</h1>
+          {
+            currentUser &&
+            <p>
+              <Link href="/post/[id]/edit" as={`/post/${post.id}/edit`}><a>编辑</a></Link>
+            </p>
+          }
+
+        </header>
+          <article
           className="markdown-body"
           dangerouslySetInnerHTML={{ __html: marked(post.content) }}
         ></article>
@@ -23,6 +35,7 @@ const postsShow: NextPage<Props> = (props) => {
           margin: 16px auto;
           padding: 0 16px;
         }
+        
         h1 {
           padding-bottom: 16px;
           border-bottom: 1px solid #666;
@@ -34,15 +47,16 @@ const postsShow: NextPage<Props> = (props) => {
 
 export default postsShow;
 
-export const getServerSideProps: GetServerSideProps<
-  any,
-  { id: string }
-> = async (context) => {
-  const connection = await getDatabaseConnection();
-  const post = await connection.manager.findOne(Post, context.params.id);
-  return {
-    props: {
-      post: JSON.parse(JSON.stringify(post)),
-    },
-  };
-};
+export const getServerSideProps: GetServerSideProps<any,{ id: string } > = withSession(
+    async (context:GetServerSidePropsContext) => {
+      const connection = await getDatabaseConnection();
+      const post = await connection.manager.findOne(Post, context.params.id as string);
+      const currentUser = (context.req as any).session.get('currentUser') || null;
+      return {
+        props: {
+          post: JSON.parse(JSON.stringify(post)),
+          currentUser
+        },
+      };
+    }
+)  ;
