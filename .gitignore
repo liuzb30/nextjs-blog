@@ -44,3 +44,5 @@ blog-data/
 
 # build
 dist/
+
+ormconfig.json
