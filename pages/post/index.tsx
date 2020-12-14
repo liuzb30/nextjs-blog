@@ -24,10 +24,16 @@ const PostsIndex: NextPage<Props> = (props) => {
       <div className="posts">
         <header>
           <h1>文章列表</h1>
-          {currentUser && (
+          {currentUser ? (
             <Link href="/post/new">
               <a>新增文章</a>
             </Link>
+          ) : (
+            <div>
+              <Link href="/sign_in">
+                <a>登录</a>
+              </Link>
+            </div>
           )}
         </header>
         {posts.map((post) => (

@@ -20,7 +20,10 @@ const PostNew: NextPage = (props) => {
     ),
     submit: {
       request: (formData) => axios.post("/api/v1/posts", formData),
-      callback: () => window.alert("提交成功"),
+      callback: () => {
+        window.alert("提交成功");
+        window.location.href = "/post";
+      },
     },
   });
   return (
