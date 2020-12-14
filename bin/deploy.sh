@@ -2,6 +2,8 @@ docker start 2ab &&
 cd /home/blog/app/nextjs-blog &&
 git pull &&
 yarn install --production=false &&
+yarn typeorm:build &&
+yarn m:run &&
 yarn build &&
 docker build -t lzb/node-web-app . &&
 docker kill app &&
