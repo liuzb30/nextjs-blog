@@ -48,8 +48,10 @@ yarn dev
 
 ## 部署
 ```
+yarn install --production=false
 yarn build
-yarn start
+docker build -t lzb/node-web-app .
+docker run --network=host -p 3000:3000 -d lzb/node-web-app
 ```
 
 ## 错误
