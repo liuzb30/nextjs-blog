@@ -51,7 +51,7 @@ export function useForm<T>(options: useFormOptions<T>) {
           } else if (error.response.status === 401) {
             alert(JSON.stringify(error.response.data));
             console.log(2222);
-            window.location.href = `/sign_in?redirectTo=/post/new`;
+            window.location.href = `/sign_in?redirectTo=${location.pathname}`;
           } else {
             alert(JSON.stringify(error.response.data));
           }
