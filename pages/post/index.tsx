@@ -23,7 +23,7 @@ const PostsIndex: NextPage<Props> = (props) => {
     <>
       <div className="posts">
         <header>
-          <h1>文章列表 {totalCount}</h1>
+          <h1>文章列表</h1>
           {currentUser && (
             <Link href="/post/new">
               <a>新增文章</a>
