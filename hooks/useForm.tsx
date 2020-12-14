@@ -68,15 +68,17 @@ export function useForm<T>(options: useFormOptions<T>) {
             key={field.label}
             className={cs("field", `field-${field.key}`, field.className)}
           >
-            <label htmlFor="">
-              {field.label}
+            <label htmlFor="" className="label">
+              <span className="label-text">{field.label}</span>
               {field.type === "textarea" ? (
                 <textarea
+                  className="control"
                   onChange={(e) => onChange(field.key, e.target.value)}
                   value={formData[field.key].toString()}
                 />
               ) : (
                 <input
+                  className="control"
                   type={field.type}
                   value={formData[field.key].toString()}
                   onChange={(e) => onChange(field.key, e.target.value)}
