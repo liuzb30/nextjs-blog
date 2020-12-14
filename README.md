@@ -48,10 +48,9 @@ yarn dev
 
 ## 部署
 ```
-yarn install --production=false
-yarn build
-docker build -t lzb/node-web-app .
-docker run --network=host -p 3000:3000 -d lzb/node-web-app
+更新脚本时，需要运行  dos2unix bin/deploy.sh，不然会报'\r': command not found错误
+git push
+ssh blog@dev1 'bash -s' < bin/deploy.sh
 ```
 
 ## 错误
