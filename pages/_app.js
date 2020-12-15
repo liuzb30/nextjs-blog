@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>next app</title>
+        <title>刘圳槟的个人博客</title>
       </Head>
       <Component {...pageProps} />
     </>
