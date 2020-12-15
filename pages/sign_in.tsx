@@ -37,9 +37,6 @@ const SignIn: NextPage<{ user: User }> = (props) => {
       {props.user && <div>当前登录用户为{props.user.username}</div>}
       <h1>登录页面</h1>
       {form}
-      <Link href="/sign_up">
-        <a>没有账号？去注册</a>
-      </Link>
     </div>
   );
 };
