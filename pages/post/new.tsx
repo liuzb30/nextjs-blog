@@ -27,7 +27,7 @@ const PostNew: NextPage = (props) => {
     },
   });
   return (
-    <div className="postsNew">
+    <div className="postsNew wrapper">
       <div className="form-wrapper">{form}</div>
       <style jsx global>{`
         .form-wrapper {
