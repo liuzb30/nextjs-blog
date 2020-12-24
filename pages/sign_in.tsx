@@ -17,7 +17,7 @@ const SignIn: NextPage<{ user: User }> = (props) => {
       { label: "用户名", type: "text", key: "username" },
       { label: "密码", type: "password", key: "password" },
     ],
-    buttons: <button type="submit">登录</button>,
+    buttons: <button className='button' type="submit">登录</button>,
     submit: {
       request: (fromData) => axios.post("/api/v1/sessions", fromData),
       callback: () => {
@@ -33,7 +33,7 @@ const SignIn: NextPage<{ user: User }> = (props) => {
   });
 
   return (
-    <div>
+    <div className='wrapper'>
       {props.user && <div>当前登录用户为{props.user.username}</div>}
       <h1>登录页面</h1>
       {form}

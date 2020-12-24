@@ -86,7 +86,7 @@ export function useForm<T>(options: useFormOptions<T>) {
               )}
             </label>
             {errors[field.key].length ? (
-              <p>{errors[field.key].join(",")}</p>
+              <p className='error-tips'>{errors[field.key].join(",")}</p>
             ) : null}
           </div>
         ))}
@@ -94,7 +94,8 @@ export function useForm<T>(options: useFormOptions<T>) {
       </form>
       <style jsx>{`
         .field {
-          margin: 8px 0;
+          margin: 10px 0;
+          
         }
         .label {
           display: flex;
@@ -104,6 +105,7 @@ export function useForm<T>(options: useFormOptions<T>) {
           height: 32px;
         }
         .label > .label-text {
+          min-width: 4em;
           white-space: nowrap;
           margin-right: 1em;
         }

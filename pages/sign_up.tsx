@@ -26,7 +26,7 @@ const SignUp: NextPage = (props) => {
   });
 
   return (
-    <div>
+    <div className='wrapper'>
       <h1>注册页面</h1>
       {form}
     </div>

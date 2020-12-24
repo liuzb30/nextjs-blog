@@ -11,3 +11,41 @@ a {text-decoration: none; color: #00adb5; border-bottom: 1px solid;}
 a, input, button {font: inherit;}
 h1 {margin: 8px 0;}
 p {margin: 4px 0;}
+input{
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 4px;
+  text-shadow: none;
+  -webkit-appearance:none;/*去除阴影边框*/
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  outline: none;
+}
+
+button{
+  width: 100%;
+  text-align: center;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #00adb5;
+  border-radius: 8px;
+  border: none;
+  &:hover{
+    background-color: cadetblue;
+  }
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 16px auto;
+  padding: 0 16px;
+}
+
+.error-tips{
+  padding-top: 6px;
+  font-size: 12px;
+  color: #ed4014;
+}
